@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智汇农链——县域数字普惠金融科技服务平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        /* 全局背景图 + 半透明遮罩，让文字更清晰 */
+        body {
+            background-image: url("https://picsum.photos/1080/1920");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            z-index: -1;
+        }
+
+        /* 顶部模拟浏览器栏 */
+        .browser-header {
+            background-color: #fff;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        .browser-header .close-btn {
+            width: 30px;
+            height: 30px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .browser-header .url-bar {
+            flex: 1;
+            height: 40px;
+            background-color: #f1f3f5;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .browser-header .tool-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        /* 首页 */
+        .home-page {
+            display: none;
+            padding-bottom: 80px;
+        }
+
+        .home-page.active {
+            display: block;
+        }
+
+        .banner {
+            background: linear-gradient(to bottom, rgba(128,128,128,0.8), rgba(255,255,255,0.5));
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .banner h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .banner p {
+            font-size: 20px;
+        }
+
+        /* 功能入口卡片 */
+        .function-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+            margin-top: -60px;
+        }
+
+        .function-card {
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .function-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .function-card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .function-card .title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* 平台简介 */
+        .section-title {
+            padding: 0 20px;
+            margin: 30px 0 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            border-left: 4px solid #009e5f;
+            padding-left: 10px;
+        }
+
+        .section-content {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 0 20px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 投稿专区页面 */
+        .submit-page {
+            display: none;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .submit-page.active {
+            display: block;
+        }
+
+        .submit-header {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin: 20px 0 30px;
+            border-left: 4px solid #009e5f;
+            padding-left: 10px;
+        }
+
+        .submit-intro {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .form-item {
+            background-color: #fff;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            padding: 5px;
+        }
+
+        .form-item input,
+        .form-item textarea {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 20px;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .form-item textarea {
+            min-height: 200px;
+            resize: none;
+        }
+
+        .form-item input:focus,
+        .form-item textarea:focus {
+            border: 2px solid #009e5f;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #009e5f;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #007a4b;
+        }
+
+        /* 底部导航 */
+        .mobile-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+
+        .mobile-footer button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .mobile-footer button:hover {
+            color: #009e5f;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部模拟浏览器栏 -->
+    <div class="browser-header">
+        <div class="close-btn">×</div>
+        <div class="url-bar">智汇农链 - 数字普惠金融服务平台</div>
+        <div class="tool-icon">⟳</div>
+        <div class="tool-icon">🗂️</div>
+    </div>
+
+    <!-- 平台首页 -->
+    <div class="home-page active" id="homePage">
+        <div class="banner">
+            <h1>智汇农链</h1>
+            <p>县域数字普惠金融科技服务平台</p>
+            <p style="margin-top:8px">香梨产业 · 智慧赋能 · 助农兴农</p>
+        </div>
+
+        <div class="function-grid">
+            <div class="function-card">
+                <div class="icon">🍐</div>
+                <div class="title">香梨产业展示</div>
+            </div>
+            <div class="function-card">
+                <div class="icon">📊</div>
+                <div class="title">金融数据服务</div>
+            </div>
+            <div class="function-card" onclick="switchToSubmit()">
+                <div class="icon">✍️</div>
+                <div class="title">产业信息投稿</div>
+            </div>
+            <div class="function-card">
+                <div class="icon">🛒</div>
+                <div class="title">香梨产品商城</div>
+            </div>
+        </div>
+
+        <div class="section-title">平台简介</div>
+        <div class="section-content">
+            本平台以「香梨产业」为核心，聚焦县域数字普惠金融，通过科技赋能农业产业链，实现资金融通、信息互通、产业互联，为梨农、合作社、企业提供一站式金融科技服务，助力乡村产业高质量发展。
+        </div>
+    </div>
+
+    <!-- 投稿专区页面 -->
+    <div class="submit-page" id="submitPage">
+        <div class="submit-header">香梨产业信息投稿</div>
+
+        <div class="submit-intro">
+            欢迎投稿：香梨种植技术、产业资讯、金融需求、产品推广、乡村振兴案例、原创图文介绍
+        </div>
+
+        <div class="form-item">
+            <input type="text" id="nickname" placeholder="请输入您的姓名/单位">
+        </div>
+
+        <div class="form-item">
+            <textarea id="content" placeholder="请输入投稿内容（香梨产业/金融服务/产品介绍）"></textarea>
+        </div>
+
+        <div class="form-item">
+            <input type="tel" id="phone" placeholder="请输入联系电话">
+        </div>
+
+        <button class="submit-btn" onclick="submitForm()">提交信息</button>
+    </div>
+
+    <!-- 底部导航 -->
+    <div class="mobile-footer">
+        <button onclick="switchToHome()">←</button>
+        <button>→</button>
+        <button>☰</button>
+        <button>⬇️</button>
+        <button>▦</button>
+        <button>⋮</button>
+    </div>
+
+    <script>
+        // 切换到投稿页
+        function switchToSubmit() {
+            document.getElementById('homePage').classList.remove('active');
+            document.getElementById('submitPage').classList.add('active');
+        }
+
+        // 切换到首页
+        function switchToHome() {
+            document.getElementById('submitPage').classList.remove('active');
+            document.getElementById('homePage').classList.add('active');
+        }
+
+        // 提交表单
+        function submitForm() {
+            const nickname = document.getElementById('nickname').value.trim();
+            const content = document.getElementById('content').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            if (!nickname || !content || !phone) {
+                alert('请填写完整信息！');
+                return;
+            }
+
+            if (!/^1[3-9]\d{9}$/.test(phone)) {
+                alert('请输入正确的手机号！');
+                return;
+            }
+
+            alert('提交成功！我们将尽快为您审核发布');
+            
+            // 清空表单并返回首页
+            document.getElementById('nickname').value = '';
+            document.getElementById('content').value = '';
+            document.getElementById('phone').value = '';
+            switchToHome();
+        }
+    </script>
+</body>
+</html>
