@@ -256,13 +256,6 @@
     </style>
 </head>
 <body>
-    <!-- 顶部模拟浏览器栏 -->
-    <div class="browser-header">
-        <div class="close-btn">×</div>
-        <div class="url-bar">智汇农链 - 数字普惠金融服务平台</div>
-        <div class="tool-icon">⟳</div>
-        <div class="tool-icon">🗂️</div>
-    </div>
 
     <!-- 平台首页 -->
     <div class="home-page active" id="homePage">
@@ -328,21 +321,25 @@
 
     <!-- 3. 产业投研报告页面（原有） -->
     <div class="submit-page" id="submitPage">
-        <div class="page-header">香梨产业信息投稿</div>
-        <div class="page-content">
+        <div class="submit-header">香梨产业信息投稿</div>
+
+        <div class="submit-intro">
             欢迎投稿：香梨种植技术、产业资讯、金融需求、产品推广、乡村振兴案例、原创图文介绍
         </div>
+
         <div class="form-item">
             <input type="text" id="nickname" placeholder="请输入您的姓名/单位">
         </div>
+
         <div class="form-item">
             <textarea id="content" placeholder="请输入投稿内容（香梨产业/金融服务/产品介绍）"></textarea>
         </div>
+
         <div class="form-item">
             <input type="tel" id="phone" placeholder="请输入联系电话">
         </div>
+
         <button class="submit-btn" onclick="submitForm()">提交信息</button>
-        <button class="back-btn" onclick="switchToHome()" style="margin-top:10px">返回首页</button>
     </div>
 
     <!-- 4. 香梨产品商城页面 -->
@@ -355,16 +352,6 @@
             <strong>助农目标：</strong>拓宽香梨销售渠道，解决农产品滞销问题，以消费帮扶助力乡村产业振兴，带动梨农持续增收。
         </div>
         <button class="back-btn" onclick="switchToHome()">返回首页</button>
-    </div>
-
-    <!-- 底部导航 -->
-    <div class="mobile-footer">
-        <button onclick="switchToHome()">←</button>
-        <button>→</button>
-        <button>☰</button>
-        <button>⬇️</button>
-        <button>▦</button>
-        <button>⋮</button>
     </div>
 
     <script>
