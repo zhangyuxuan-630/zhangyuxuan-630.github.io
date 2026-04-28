@@ -12,9 +12,9 @@
             font-family: "Microsoft YaHei", sans-serif;
         }
 
-        /* 全局背景图 + 半透明遮罩，让文字更清晰 */
+        /* 全局背景图 + 半透明遮罩 */
         body {
-            background-image: url("https://picsum.photos/1080/1920");
+            background-image: url("背景图片.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -104,6 +104,17 @@
             text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
+        /* 头像样式 */
+        .banner-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            margin-bottom: 15px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
         .banner h1 {
             font-size: 32px;
             margin-bottom: 15px;
@@ -171,18 +182,18 @@
             color: #333;
         }
 
-        /* 投稿专区页面 */
-        .submit-page {
+        /* 通用子页面样式 */
+        .industry-page, .finance-page, .mall-page, .submit-page {
             display: none;
             padding: 20px;
             min-height: 100vh;
         }
 
-        .submit-page.active {
+        .industry-page.active, .finance-page.active, .mall-page.active, .submit-page.active {
             display: block;
         }
 
-        .submit-header {
+        .page-header {
             font-size: 28px;
             font-weight: bold;
             color: #333;
@@ -191,44 +202,17 @@
             padding-left: 10px;
         }
 
-        .submit-intro {
+        .page-content {
             background-color: #fff;
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
             font-size: 18px;
-            line-height: 1.6;
+            line-height: 1.8;
             color: #333;
         }
 
-        .form-item {
-            background-color: #fff;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            padding: 5px;
-        }
-
-        .form-item input,
-        .form-item textarea {
-            width: 100%;
-            border: none;
-            outline: none;
-            font-size: 20px;
-            padding: 15px;
-            border-radius: 12px;
-        }
-
-        .form-item textarea {
-            min-height: 200px;
-            resize: none;
-        }
-
-        .form-item input:focus,
-        .form-item textarea:focus {
-            border: 2px solid #009e5f;
-        }
-
-        .submit-btn {
+        .back-btn {
             width: 100%;
             background-color: #009e5f;
             color: #fff;
@@ -240,7 +224,7 @@
             transition: background-color 0.2s;
         }
 
-        .submit-btn:hover {
+        .back-btn:hover {
             background-color: #007a4b;
         }
 
@@ -283,25 +267,30 @@
     <!-- 平台首页 -->
     <div class="home-page active" id="homePage">
         <div class="banner">
+            <img src="梨果熟了.jpg" class="banner-avatar" alt="智汇农链头像">
             <h1>智汇农链</h1>
             <p>县域数字普惠金融科技服务平台</p>
             <p style="margin-top:8px">香梨产业 · 智慧赋能 · 助农兴农</p>
         </div>
 
         <div class="function-grid">
-            <div class="function-card">
+            <!-- 香梨产业展示 -->
+            <div class="function-card" onclick="switchToIndustry()">
                 <div class="icon">🍐</div>
                 <div class="title">香梨产业展示</div>
             </div>
-            <div class="function-card">
+            <!-- 金融数据服务 -->
+            <div class="function-card" onclick="switchToFinance()">
                 <div class="icon">📊</div>
                 <div class="title">金融数据服务</div>
             </div>
+            <!-- 产业投研报告 -->
             <div class="function-card" onclick="switchToSubmit()">
                 <div class="icon">✍️</div>
-                <div class="title">产业信息投稿</div>
+                <div class="title">农产品投研分析报告</div>
             </div>
-            <div class="function-card">
+            <!-- 香梨产品商城 -->
+            <div class="function-card" onclick="switchToMall()">
                 <div class="icon">🛒</div>
                 <div class="title">香梨产品商城</div>
             </div>
@@ -309,31 +298,63 @@
 
         <div class="section-title">平台简介</div>
         <div class="section-content">
-            本平台以「香梨产业」为核心，聚焦县域数字普惠金融，通过科技赋能农业产业链，实现资金融通、信息互通、产业互联，为梨农、合作社、企业提供一站式金融科技服务，助力乡村产业高质量发展。
+        本平台以「香梨产业」为核心，聚焦县域数字普惠金融，通过科技赋能农业产业链，实现资金融通、信息互通、产业互联，为梨农、合作社、企业提供一站式金融科技服务，助力乡村产业高质量发展。
         </div>
     </div>
 
-    <!-- 投稿专区页面 -->
-    <div class="submit-page" id="submitPage">
-        <div class="submit-header">香梨产业信息投稿</div>
+    <!-- 1. 香梨产业展示页面 -->
+    <div class="industry-page" id="industryPage">
+        <div class="page-header">香梨产业展示</div>
+        <div class="page-content">
+            <strong>产业核心：</strong>以山西省文水县贡梨为核心标杆，覆盖平遥、临汾等山西特色梨产区，打造集种植、加工、销售于一体的特色农业产业带。<br/><br/>
+            <strong>产业痛点：</strong>文水梨加工环节融资缺口高达4.8亿元，设备升级贷款审批周期长达7个月，32%农户土地估值缺失，难以转化为金融信用。<br/><br/>
+            <strong>产业优势：</strong>文水贡梨历史悠久、品质上乘，具备地理标志产品属性；产业链涵盖种植、仓储、加工、电商，市场需求旺盛，增收潜力巨大。<br/><br/>
+            <strong>发展目标：</strong>通过金融科技赋能，助力梨产业升级，带动梨农户均年增收1.5-3万元，打造山西特色梨产业数字化样板。
+        </div>
+        <button class="back-btn" onclick="switchToHome()">返回首页</button>
+    </div>
 
-        <div class="submit-intro">
+    <!-- 2. 金融数据服务页面 -->
+    <div class="finance-page" id="financePage">
+        <div class="page-header">金融数据服务</div>
+        <div class="page-content">
+            <strong>四维数据融合：</strong>整合政务数据（土地确权/补贴）、交易数据（供应链/销售）、信贷数据（农信社记录）、线下数据（实地采集/物联网），构建数字信用画像。<br/><br/>
+            <strong>核心服务：</strong>为农户破解“信用白户”难题，为金融机构提供贷前获客、贷中监控、贷后预警全链条风控，审批周期从7个月压缩至1-3天。<br/><br/>
+            <strong>风控能力：</strong>运用大数据+机器学习+区块链存证，实现7×24小时动态风控，涉农贷款不良率控制在1.0%以下，远低于行业4.1%平均水平。<br/><br/>
+            <strong>服务价值：</strong>降低农户融资成本1.5-2个百分点，减少金融机构尽调成本，实现资金精准滴灌涉农产业。
+        </div>
+        <button class="back-btn" onclick="switchToHome()">返回首页</button>
+    </div>
+
+    <!-- 3. 产业投研报告页面（原有） -->
+    <div class="submit-page" id="submitPage">
+        <div class="page-header">香梨产业信息投稿</div>
+        <div class="page-content">
             欢迎投稿：香梨种植技术、产业资讯、金融需求、产品推广、乡村振兴案例、原创图文介绍
         </div>
-
         <div class="form-item">
             <input type="text" id="nickname" placeholder="请输入您的姓名/单位">
         </div>
-
         <div class="form-item">
             <textarea id="content" placeholder="请输入投稿内容（香梨产业/金融服务/产品介绍）"></textarea>
         </div>
-
         <div class="form-item">
             <input type="tel" id="phone" placeholder="请输入联系电话">
         </div>
-
         <button class="submit-btn" onclick="submitForm()">提交信息</button>
+        <button class="back-btn" onclick="switchToHome()" style="margin-top:10px">返回首页</button>
+    </div>
+
+    <!-- 4. 香梨产品商城页面 -->
+    <div class="mall-page" id="mallPage">
+        <div class="page-header">香梨产品商城</div>
+        <div class="page-content">
+            <strong>商城定位：</strong>打造山西特色香梨产品线上展销平台，连接梨农、合作社与消费者，实现优质农产品出村进城。<br/><br/>
+            <strong>主营产品：</strong>文水贡梨鲜果、梨膏、梨汁、梨干等深加工产品，全程溯源，品质保障。<br/><br/>
+            <strong>服务模式：</strong>平台提供电商交易、物流对接、品牌推广服务，零佣金助农销售，让梨农获得更多收益。<br/><br/>
+            <strong>助农目标：</strong>拓宽香梨销售渠道，解决农产品滞销问题，以消费帮扶助力乡村产业振兴，带动梨农持续增收。
+        </div>
+        <button class="back-btn" onclick="switchToHome()">返回首页</button>
     </div>
 
     <!-- 底部导航 -->
@@ -347,16 +368,38 @@
     </div>
 
     <script>
-        // 切换到投稿页
+        // 切换到首页
+        function switchToHome() {
+            // 隐藏所有子页面
+            document.getElementById('homePage').classList.add('active');
+            document.getElementById('industryPage').classList.remove('active');
+            document.getElementById('financePage').classList.remove('active');
+            document.getElementById('submitPage').classList.remove('active');
+            document.getElementById('mallPage').classList.remove('active');
+        }
+
+        // 切换到香梨产业展示
+        function switchToIndustry() {
+            document.getElementById('homePage').classList.remove('active');
+            document.getElementById('industryPage').classList.add('active');
+        }
+
+        // 切换到金融数据服务
+        function switchToFinance() {
+            document.getElementById('homePage').classList.remove('active');
+            document.getElementById('financePage').classList.add('active');
+        }
+
+        // 切换到产业投研报告
         function switchToSubmit() {
             document.getElementById('homePage').classList.remove('active');
             document.getElementById('submitPage').classList.add('active');
         }
 
-        // 切换到首页
-        function switchToHome() {
-            document.getElementById('submitPage').classList.remove('active');
-            document.getElementById('homePage').classList.add('active');
+        // 切换到香梨产品商城
+        function switchToMall() {
+            document.getElementById('homePage').classList.remove('active');
+            document.getElementById('mallPage').classList.add('active');
         }
 
         // 提交表单
