@@ -34,55 +34,6 @@
             z-index: -1;
         }
 
-        /* 顶部模拟浏览器栏 */
-        .browser-header {
-            background-color: #fff;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            padding: 0 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 99;
-        }
-
-        .browser-header .close-btn {
-            width: 30px;
-            height: 30px;
-            background-color: #ddd;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-
-        .browser-header .url-bar {
-            flex: 1;
-            height: 40px;
-            background-color: #f1f3f5;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            padding: 0 15px;
-            color: #666;
-            font-size: 14px;
-        }
-
-        .browser-header .tool-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
         /* 首页 */
         .home-page {
             display: none;
@@ -253,6 +204,83 @@
         .mobile-footer button:hover {
             color: #009e5f;
         }
+
+        /* ========== 优化后的表单样式 ========== */
+        /* 表单容器 - 增加内边距和阴影，提升质感 */
+        .submit-form-container {
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        /* 表单项标签 - 新增，明确输入项说明 */
+        .form-label {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+            font-weight: 500;
+        }
+
+        /* 表单项容器 - 优化间距和圆角 */
+        .form-item {
+            margin-bottom: 20px;
+        }
+
+        /* 输入框/文本域 - 优化样式、内边距、圆角 */
+        .form-item input,
+        .form-item textarea {
+            width: 100%;
+            border: 1px solid #e5e7eb; /* 新增浅边框，更直观 */
+            outline: none;
+            font-size: 18px; /* 微调字号，更易阅读 */
+            padding: 16px 20px; /* 增加内边距，输入更舒适 */
+            border-radius: 12px;
+            transition: all 0.2s ease; /* 平滑过渡 */
+        }
+
+        /* 输入框聚焦样式 - 优化边框颜色和阴影 */
+        .form-item input:focus,
+        .form-item textarea:focus {
+            border-color: #009e5f;
+            box-shadow: 0 0 0 4px rgba(0, 158, 95, 0.1); /* 新增聚焦阴影，更醒目 */
+        }
+
+        /* 文本域 - 优化最小高度，增加行高 */
+        .form-item textarea {
+            min-height: 220px;
+            resize: vertical; /* 仅允许垂直拉伸，避免布局混乱 */
+            line-height: 1.7;
+        }
+
+        /* 提交按钮 - 优化样式、hover效果 */
+        .submit-btn {
+            width: 100%;
+            background-color: #009e5f;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 15px; /* 与返回按钮拉开间距 */
+        }
+
+        .submit-btn:hover {
+            background-color: #007a4b;
+            transform: translateY(-2px); /* 轻微上浮，提升交互感 */
+            box-shadow: 0 4px 8px rgba(0, 158, 95, 0.2);
+        }
+
+        /* 占位符文字样式优化 */
+        ::placeholder {
+            color: #9ca3af;
+            font-size: 17px;
+        }
     </style>
 </head>
 <body>
@@ -319,27 +347,42 @@
         <button class="back-btn" onclick="switchToHome()">返回首页</button>
     </div>
 
-    <!-- 3. 产业投研报告页面（原有） -->
+    <!-- 3. 农产品投研分析报告页面（优化后） -->
     <div class="submit-page" id="submitPage">
-        <div class="submit-header">香梨产业信息投稿</div>
-
-        <div class="submit-intro">
+        <div class="page-header">农产品投研分析报告投稿</div>
+        
+        <div class="page-content">
             欢迎投稿：香梨种植技术、产业资讯、金融需求、产品推广、乡村振兴案例、原创图文介绍
         </div>
 
-        <div class="form-item">
-            <input type="text" id="nickname" placeholder="请输入您的姓名/单位">
+        <!-- 新增表单容器，提升整体质感 -->
+        <div class="submit-form-container">
+            <!-- 姓名/单位 - 新增标签 -->
+            <div class="form-item">
+                <label class="form-label">姓名/单位</label>
+                <input type="text" id="nickname" placeholder="请输入您的姓名或单位全称（必填）">
+            </div>
+
+            <!-- 联系电话 - 新增标签 -->
+            <div class="form-item">
+                <label class="form-label">联系电话</label>
+                <input type="tel" id="phone" placeholder="请输入有效的手机号码（必填）">
+            </div>
+
+            <!-- 投稿内容 - 新增标签，优化占位符 -->
+            <div class="form-item">
+                <label class="form-label">投研报告内容</label>
+                <textarea id="content" placeholder="请详细描述您的投研分析内容，例如：
+1. 香梨产业市场行情分析
+2. 产区种植规模与产量预测
+3. 金融扶持政策解读
+4. 农产品价格走势研判
+（字数建议不少于200字）"></textarea>
+            </div>
         </div>
 
-        <div class="form-item">
-            <textarea id="content" placeholder="请输入投稿内容（香梨产业/金融服务/产品介绍）"></textarea>
-        </div>
-
-        <div class="form-item">
-            <input type="tel" id="phone" placeholder="请输入联系电话">
-        </div>
-
-        <button class="submit-btn" onclick="submitForm()">提交信息</button>
+        <button class="submit-btn" onclick="submitForm()">提交投研报告</button>
+        <button class="back-btn" onclick="switchToHome()">返回首页</button>
     </div>
 
     <!-- 4. 香梨产品商城页面 -->
@@ -389,23 +432,32 @@
             document.getElementById('mallPage').classList.add('active');
         }
 
-        // 提交表单
+        // 提交表单 - 优化提示文案，增加内容长度校验
         function submitForm() {
             const nickname = document.getElementById('nickname').value.trim();
             const content = document.getElementById('content').value.trim();
             const phone = document.getElementById('phone').value.trim();
 
+            // 1. 空值校验
             if (!nickname || !content || !phone) {
-                alert('请填写完整信息！');
+                alert('请填写所有必填项，确保信息完整！');
                 return;
             }
 
+            // 2. 手机号格式校验
             if (!/^1[3-9]\d{9}$/.test(phone)) {
-                alert('请输入正确的手机号！');
+                alert('请输入正确的11位手机号码！');
                 return;
             }
 
-            alert('提交成功！我们将尽快为您审核发布');
+            // 3. 内容长度校验（新增，保证投研报告有一定信息量）
+            if (content.length < 200) {
+                alert('投研报告内容建议不少于200字，请补充详细信息！');
+                return;
+            }
+
+            // 提交成功提示
+            alert('投研报告提交成功！我们将在1-3个工作日内审核并与您联系。');
             
             // 清空表单并返回首页
             document.getElementById('nickname').value = '';
