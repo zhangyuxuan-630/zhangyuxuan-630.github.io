@@ -167,7 +167,7 @@
             color: #333;
         }
 
-        /* 香梨产业展示内容区图片样式（核心优化） */
+        /* 农产品产业展示内容区图片样式（核心优化） */
         .page-content img {
             width: 100%;
             max-height: 400px; /* 限制最大高度，避免图片过高 */
@@ -306,17 +306,17 @@
     <!-- 平台首页 -->
     <div class="home-page active" id="homePage">
         <div class="banner">
-            <img src="梨果熟了.jpg" class="banner-avatar" alt="智汇农链头像">
-            <h1>智汇农链</h1>
-            <p>县域数字普惠金融科技服务平台</p>
-            <p style="margin-top:8px">香梨产业 · 智慧赋能 · 助农兴农</p>
-        </div>
+    <img src="梨果熟了.jpg" class="banner-avatar" alt="智汇农链头像">
+    <h1 style="color: #000000;">智汇农链</h1>
+    <p style="color: #000000;">县域数字普惠金融科技服务平台</p>
+    <p style="margin-top:8px; color: #000000;">农产品产业 · 智慧赋能 · 助农兴农</p>
+</div>
 
         <div class="function-grid">
-            <!-- 香梨产业展示 -->
-            <div class="function-card" onclick="switchToIndustry()">
-                <div class="icon">🍐</div>
-                <div class="title">香梨产业展示</div>
+            <!-- 农产品产业展示 -->
+             <div class="function-card" onclick="switchToIndustry()">
+                <div class="icon">🌳</div>
+                <div class="title">农产品产业展示</div>
             </div>
             <!-- 金融数据服务 -->
             <div class="function-card" onclick="switchToFinance()">
@@ -328,26 +328,54 @@
                 <div class="icon">✍️</div>
                 <div class="title">农产品投研分析报告</div>
             </div>
-            <!-- 香梨产品商城 -->
+            <!-- 农产品商城 -->
             <div class="function-card" onclick="switchToMall()">
                 <div class="icon">🛒</div>
-                <div class="title">香梨产品商城</div>
+                <div class="title">农产品商城</div>
             </div>
         </div>
 
         <div class="section-title">平台简介</div>
         <div class="section-content">
-        本平台以「香梨产业」为核心，聚焦县域数字普惠金融，通过科技赋能农业产业链，实现资金融通、信息互通、产业互联，为梨农、合作社、企业提供一站式金融科技服务，助力乡村产业高质量发展。
+        本平台以「农产品产业」为核心，聚焦县域数字普惠金融，通过科技赋能农业产业链，实现资金融通、信息互通、产业互联，为农户、合作社、企业提供一站式金融科技服务，助力乡村产业高质量发展。
         </div>
     </div>
 
-    <!-- 1. 香梨产业展示页面（已更新为完整全产业链内容 + 图片优化） -->
-    <div class="industry-page" id="industryPage">
-        <div class="page-header">
-            香梨产业展示
-        </div>
+    <!-- 1. 农产品展示页面（已更新为完整全产业链内容 + 图片优化） -->
+    <!-- 1. 农产品展示页面（已更新为梨/苹果切换 + 完整全产业链内容 + 图片优化） -->
+<div class="industry-page" id="industryPage">
+    <div class="page-header">
+        农产品产业展示
+    </div>
+    
+    <!-- 新增：产品切换标签 -->
+    <div style="display: flex; gap: 10px; margin: 0 20px 20px; flex-wrap: wrap;">
+        <button class="product-tab active" onclick="switchProduct('pear')" style="
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background-color: #009e5f;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+        ">梨产品介绍</button>
+        <button class="product-tab" onclick="switchProduct('apple')" style="
+            padding: 12px 24px;
+            border: 1px solid #009e5f;
+            border-radius: 8px;
+            background-color: #fff;
+            color: #009e5f;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+        ">苹果产品介绍</button>
+    </div>
+
+    <!-- 梨产品内容模块 -->
+    <div class="product-content pear-content active" id="pearContent" style="display: block;">
         <div class="page-content">
-            <strong style="font-size: 20px; display: block; margin-bottom: 15px;">全产业链介绍</strong>
+            <strong style="font-size: 20px; display: block; margin-bottom: 15px;">梨产品介绍</strong>
             <img src="香梨产业展示.jpg" alt="香梨产业展示">
             <strong>1. 源头把控：生态果园</strong><br>
             <span style="margin-left: 1em;">• 环境优越：精选阳光充足、土壤肥沃的生态种植基地，确保香梨在天然环境中生长。</span><br>
@@ -373,8 +401,87 @@
             <strong style="font-size: 20px; display: block; margin: 15px 0;">结语</strong>
             这不仅是一次香梨的丰收，更是一场关于品质与匠心的展示。从果园到市场，每一个环节都凝聚着果农的辛勤与智慧，只为将这份自然的馈赠，以最完美的姿态呈现在您的餐桌上。选择我们的香梨，就是选择健康、美味与放心。
         </div>
-        <button class="back-btn" onclick="switchToHome()">返回首页</button>
     </div>
+
+    <!-- 苹果产品内容模块 -->
+    <div class="product-content apple-content" id="appleContent" style="display: none;">
+        <div class="page-content">
+            <strong style="font-size: 20px; display: block; margin-bottom: 15px;">苹果产品介绍</strong>
+            <img src="苹果产品展示.jpg" alt="苹果产业展示">
+            <strong>1. 源头把控：生态果园</strong><br>
+            <span style="margin-left: 1em;">• 环境优越：优选海拔适宜、昼夜温差大的生态种植基地，充足的光照让苹果积累更多糖分，口感更香甜。</span><br>
+            <span style="margin-left: 1em;">• 科学培育：采用有机种植模式，搭配滴灌、生物防虫等现代化技术，全程不使用高毒农药，确保苹果绿色健康。</span><br><br>
+
+            <strong>2. 人工采摘：精挑细选</strong><br>
+            <span style="margin-left: 1em;">• 适时采收：严格把控采摘时间，在苹果糖度达到15°以上时进行人工采摘，保证果肉脆嫩、甜度达标。</span><br>
+            <span style="margin-left: 1em;">• 人工分拣：经过3道人工筛选工序，剔除碰伤、果形不规则的果实，只保留果面光洁、大小均匀的优质苹果。</span><br><br>
+
+            <strong>3. 精细加工：分级包装</strong><br>
+            <span style="margin-left: 1em;">• 严格分级：按照果径（75mm/80mm/85mm）、着色度、糖度等指标分级，满足礼品、商超、批发等不同场景需求。</span><br>
+            <span style="margin-left: 1em;">• 安全包装：采用防震泡沫网套+硬纸板礼盒/纸箱包装，多层防护避免运输过程中磕碰，延长保鲜期。</span><br><br>
+
+            <strong>4. 市场流通：直达消费者</strong><br>
+            <span style="margin-left: 1em;">• 冷链运输：采摘后2小时内预冷，全程0-4℃冷链运输，锁住苹果的新鲜度和脆爽口感。</span><br>
+            <span style="margin-left: 1em;">• 多渠道销售：覆盖线上直播带货、社区团购、商超专柜、出口贸易等渠道，让优质苹果走向全国乃至海外。</span><br><br>
+
+            <strong style="font-size: 20px; display: block; margin: 15px 0;">核心价值</strong>
+            <span style="margin-left: 1em;">• 品质保证：全程可追溯体系，扫码即可查看种植、采摘、加工全流程信息，吃得放心。</span><br>
+            <span style="margin-left: 1em;">• 自然美味：不打蜡、不催红，自然成熟，保留苹果原有的果香和营养，富含维生素C和膳食纤维。</span><br>
+            <span style="margin-left: 1em;">• 产业带动：带动周边果农标准化种植，统一收购、统一销售，提升果农收益，助力乡村产业升级。</span><br><br>
+
+            <strong style="font-size: 20px; display: block; margin: 15px 0;">结语</strong>
+            每一颗苹果都凝聚着果农的匠心与自然的馈赠，从高山果园到您的手中，我们坚守品质初心，只为让您品尝到最本真的苹果滋味。选择我们的苹果，就是选择自然、健康与安心。
+        </div>
+    </div>
+
+    <button class="back-btn" onclick="switchToHome()">返回首页</button>
+</div>
+
+<!-- 新增：切换产品的JS函数（需放到页面的<script>标签内） -->
+<script>
+    // 切换梨/苹果产品展示
+    function switchProduct(type) {
+        // 切换标签样式
+        const tabs = document.querySelectorAll('.product-tab');
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+            tab.style.backgroundColor = '#fff';
+            tab.style.color = '#009e5f';
+            tab.style.border = '1px solid #009e5f';
+        });
+        event.target.classList.add('active');
+        event.target.style.backgroundColor = '#009e5f';
+        event.target.style.color = '#fff';
+        event.target.style.border = 'none';
+
+        // 切换产品内容
+        if (type === 'pear') {
+            document.getElementById('pearContent').style.display = 'block';
+            document.getElementById('appleContent').style.display = 'none';
+        } else if (type === 'apple') {
+            document.getElementById('pearContent').style.display = 'none';
+            document.getElementById('appleContent').style.display = 'block';
+        }
+    }
+
+    // 保留原有切换页面的函数
+    function switchToHome() {
+        document.getElementById('homePage').classList.add('active');
+        document.getElementById('industryPage').classList.remove('active');
+        document.getElementById('financePage').classList.remove('active');
+        document.getElementById('submitPage').classList.remove('active');
+        document.getElementById('mallPage').classList.remove('active');
+    }
+
+    function switchToIndustry() {
+        document.getElementById('homePage').classList.remove('active');
+        document.getElementById('industryPage').classList.add('active');
+        // 默认显示梨产品
+        switchProduct('pear');
+    }
+
+    // 其他原有函数（switchToFinance/switchToSubmit/switchToMall/submitForm）保持不变
+</script>
 
     <!-- 2. 金融数据服务页面 -->
     <div class="finance-page" id="financePage">
@@ -388,50 +495,427 @@
         <button class="back-btn" onclick="switchToHome()">返回首页</button>
     </div>
 
-    <!-- 3. 农产品投研分析报告页面（优化后） -->
-    <div class="submit-page" id="submitPage">
-        <div class="page-header">农产品投研分析报告投稿</div>
-        
-        <div class="page-content">
-            欢迎投稿：香梨种植技术、产业资讯、金融需求、产品推广、乡村振兴案例、原创图文介绍
-        </div>
-
-        <div class="submit-form-container">
-            <div class="form-item">
-                <label class="form-label">姓名/单位</label>
-                <input type="text" id="nickname" placeholder="请输入您的姓名或单位全称（必填）">
-            </div>
-
-            <div class="form-item">
-                <label class="form-label">联系电话</label>
-                <input type="tel" id="phone" placeholder="请输入有效的手机号码（必填）">
-            </div>
-
-            <div class="form-item">
-                <label class="form-label">投研报告内容</label>
-                <textarea id="content" placeholder="请详细描述您的投研分析内容，例如：
-1. 香梨产业市场行情分析
-2. 产区种植规模与产量预测
-3. 金融扶持政策解读
-4. 农产品价格走势研判"></textarea>
-            </div>
-        </div>
-
-        <button class="submit-btn" onclick="submitForm()">提交投研报告</button>
-        <button class="back-btn" onclick="switchToHome()">返回首页</button>
+    <!-- 3. 农产品投研分析报告页面（改为查看他人报告） -->
+<div class="submit-page" id="submitPage">
+    <div class="page-header">农产品投研分析报告</div>
+    
+    <div class="page-content">
+        这里汇总了行业专家、农户、企业发布的各类农产品投研分析报告，涵盖市场行情、种植技术、金融政策等方向，助力您全面了解农产品产业动态。
     </div>
 
-    <!-- 4. 香梨产品商城页面 -->
-    <div class="mall-page" id="mallPage">
-        <div class="page-header">香梨产品商城</div>
-        <div class="page-content">
-            <strong>商城定位：</strong>打造山西特色香梨产品线上展销平台，连接梨农、合作社与消费者，实现优质农产品出村进城。<br/><br/>
-            <strong>主营产品：</strong>文水贡梨鲜果、梨膏、梨汁、梨干等深加工产品，全程溯源，品质保障。<br/><br/>
-            <strong>服务模式：</strong>平台提供电商交易、物流对接、品牌推广服务，零佣金助农销售，让梨农获得更多收益。<br/><br/>
-            <strong>助农目标：</strong>拓宽香梨销售渠道，解决农产品滞销问题，以消费帮扶助力乡村产业振兴，带动梨农持续增收。
+    <!-- 报告筛选栏（可选，提升实用性） -->
+    <div style="background-color: #fff; border-radius: 12px; padding: 20px; margin: 0 20px 20px;">
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
+            <button class="filter-btn active" onclick="filterReport('all')" style="
+                padding: 8px 16px;
+                border: none;
+                border-radius: 8px;
+                background-color: #009e5f;
+                color: #fff;
+                font-size: 16px;
+                cursor: pointer;
+            ">全部报告</button>
+            <button class="filter-btn" onclick="filterReport('pear')" style="
+                padding: 8px 16px;
+                border: 1px solid #009e5f;
+                border-radius: 8px;
+                background-color: #fff;
+                color: #009e5f;
+                font-size: 16px;
+                cursor: pointer;
+            ">梨类专题</button>
+            <button class="filter-btn" onclick="filterReport('apple')" style="
+                padding: 8px 16px;
+                border: 1px solid #009e5f;
+                border-radius: 8px;
+                background-color: #fff;
+                color: #009e5f;
+                font-size: 16px;
+                cursor: pointer;
+            ">苹果专题</button>
+            <button class="filter-btn" onclick="filterReport('policy')" style="
+                padding: 8px 16px;
+                border: 1px solid #009e5f;
+                border-radius: 8px;
+                background-color: #fff;
+                color: #009e5f;
+                font-size: 16px;
+                cursor: pointer;
+            ">政策解读</button>
         </div>
-        <button class="back-btn" onclick="switchToHome()">返回首页</button>
     </div>
+
+    <!-- 报告列表区域 -->
+    <div class="report-list" style="padding: 0 20px; margin-bottom: 20px;">
+        <!-- 报告卡片1 -->
+        <div class="report-card" data-type="pear" style="
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        " onclick="viewReportDetail('report1')">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                <h3 style="font-size: 19px; color: #333; margin: 0;">2025年山西酥梨产业市场行情及价格走势分析</h3>
+                <span style="font-size: 14px; color: #999;">发布时间：2025-05-12</span>
+            </div>
+            <div style="font-size: 16px; color: #666; line-height: 1.5; margin-bottom: 10px;">
+                核心要点：2025年酥梨主产区种植面积、产量预测，市场供需关系分析，全年价格走势预判，农户种植收益测算。
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 14px; color: #999;">阅读量：1258</span>
+            </div>
+        </div>
+
+        <!-- 报告卡片2 -->
+        <div class="report-card" data-type="apple" style="
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        " onclick="viewReportDetail('report2')">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                <h3 style="font-size: 19px; color: #333; margin: 0;">2025年苹果产业金融扶持政策解读</h3>
+                <span style="font-size: 14px; color: #999;">发布时间：2025-04-28</span>
+            </div>
+            <div style="font-size: 16px; color: #666; line-height: 1.5; margin-bottom: 10px;">
+                核心要点：2025年针对苹果种植户的信贷补贴政策、农业保险新规、冷链物流扶持资金申请指南。
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 14px; color: #999;">阅读量：986</span>
+            </div>
+        </div>
+
+        <!-- 报告卡片3 -->
+        <div class="report-card" data-type="policy" style="
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        " onclick="viewReportDetail('report3')">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                <h3 style="font-size: 19px; color: #333; margin: 0;">2025年农产品乡村振兴扶持政策汇总</h3>
+                <span style="font-size: 14px; color: #999;">发布时间：2025-03-15</span>
+            </div>
+            <div style="font-size: 16px; color: #666; line-height: 1.5; margin-bottom: 10px;">
+                核心要点：涵盖梨、苹果等农产品的种植补贴、加工扶持、电商销售激励、金融贷款贴息等全维度政策。
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 14px; color: #999;">阅读量：2145</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 报告详情弹窗（默认隐藏） -->
+    <div id="reportDetailModal" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.7);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        padding: 20px;
+    ">
+        <div style="
+            background-color: #fff;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+        ">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="font-size: 22px; color: #333; margin: 0;" id="reportDetailTitle">报告标题</h2>
+                <button onclick="closeReportModal()" style="
+                    background: none;
+                    border: none;
+                    font-size: 24px;
+                    color: #999;
+                    cursor: pointer;
+                ">×</button>
+            </div>
+            <div style="font-size: 14px; color: #999; margin-bottom: 20px;" id="reportDetailMeta">
+                发布时间：XXXX-XX-XX | 阅读量：XXX
+            </div>
+            <div style="font-size: 17px; color: #333; line-height: 1.8;" id="reportDetailContent">
+                报告详细内容...
+            </div>
+        </div>
+    </div>
+
+    <button class="back-btn" onclick="switchToHome()">返回首页</button>
+</div>
+
+<!-- 新增/修改的JS函数（需放到页面的<script>标签内） -->
+<script>
+    // 筛选报告
+    function filterReport(type) {
+        // 切换筛选按钮样式
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.classList.remove('active');
+            btn.style.backgroundColor = '#fff';
+            btn.style.color = '#009e5f';
+            btn.style.border = '1px solid #009e5f';
+        });
+        event.target.classList.add('active');
+        event.target.style.backgroundColor = '#009e5f';
+        event.target.style.color = '#fff';
+        event.target.style.border = 'none';
+
+        // 筛选报告卡片
+        const reportCards = document.querySelectorAll('.report-card');
+        reportCards.forEach(card => {
+            if (type === 'all' || card.dataset.type === type) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // 查看报告详情
+    function viewReportDetail(reportId) {
+        const modal = document.getElementById('reportDetailModal');
+        const titleEl = document.getElementById('reportDetailTitle');
+        const metaEl = document.getElementById('reportDetailMeta');
+        const contentEl = document.getElementById('reportDetailContent');
+
+        // 根据报告ID填充不同内容
+        if (reportId === 'report1') {
+            titleEl.textContent = '2025年山西酥梨产业市场行情及价格走势分析';
+            metaEl.textContent = '发布时间：2025-05-12 | 阅读量：1258';
+            contentEl.innerHTML = `
+                <strong>一、2025年山西酥梨主产区种植情况</strong><br>
+                1. 核心产区：晋中市平遥县襄垣乡酥梨种植面积约6万亩，总产量预计超2亿斤；吕梁市文水县南安镇贡梨种植面积3万亩，年总产量约1亿斤；<br>
+                2. 种植品种：平遥以酥梨为主，独特丘陵气候造就其含糖量高、皮薄肉厚的特色，2017年获国家农产品地理标志认证；文水贡梨以酥梨为主，配以雪花梨等品种，是始于清顺治年间的传统名产，被誉为“女皇贡梨”；<br>
+                3. 生长情况：2025年气候条件整体较好，花期无极端天气，两地均迎来丰收。平遥襄垣酥梨丰收，销售价格也比预期理想，后期市场被看好；文水南安镇雨水充足，产量比往年有所提高。<br><br>
+
+                <strong>二、市场供需分析</strong><br>
+                1. 供应端：主产区产量稳增，周边产区新增种植面积逐步投产，整体供应偏宽松；<br>
+                2. 需求端：国内商超、电商渠道需求稳定，出口订单较2024年增长10%；<br>
+                3. 库存：2023年尾货库存约1.2万吨，去库存进度良好，对新果价格影响较小。<br><br>
+
+                <strong>三、价格走势预判</strong><br>
+                1. 开园价：2025年平遥襄垣酥梨产地收购价约为每公斤3元，价格比预期理想；文水南安贡梨价格与去年持平；<br>
+                2. 旺季价格：中秋、国庆期间价格或升至4.5-5元/斤；<br>
+                3. 长期走势：11月后进入消费淡季，价格逐步回落至3-3.5元/斤。<br><br>
+
+                <strong>四、农户收益测算</strong><br>
+                按亩产3000斤、均价3.8元/斤计算，扣除种植成本（约0.8元/斤），亩均净利润约9000元，较2024年增长约10%。
+            `;
+        } else if (reportId === 'report2') {
+            titleEl.textContent = '2025年苹果产业金融扶持政策解读';
+            metaEl.textContent = '发布时间：2024-04-28 | 阅读量：986';
+            contentEl.innerHTML = `
+                <strong>一、信贷补贴政策</strong><br>
+                1. 种植户小额贷款：单户最高可贷50万元，年利率3.85%，财政贴息2个百分点，实际利率仅1.85%；<br>
+                2. 合作社贷款：针对苹果种植合作社，贷款额度最高200万元，贴息期限最长3年；<br>
+                3. 申请条件：需提供土地承包证明、种植规模证明，无需抵押担保。<br><br>
+
+                <strong>二、农业保险新规</strong><br>
+                1. 保险覆盖：苹果种植保险覆盖自然灾害、病虫害等风险，保额从每亩5000元提升至8000元；<br>
+                2. 保费补贴：农户仅需承担20%保费，其余80%由中央、省、县三级财政补贴；<br>
+                3. 理赔时效：出险后7个工作日内完成查勘，15个工作日内赔付到账。<br><br>
+
+                <strong>三、冷链物流扶持</strong><br>
+                1. 补贴范围：苹果冷库建设、冷链运输车购置；<br>
+                2. 补贴比例：按投资额的30%给予补贴，单户最高补贴50万元；<br>
+                3. 申请时间：每年3-4月、9-10月集中申报。
+            `;
+        } else if (reportId === 'report3') {
+            titleEl.textContent = '2025年农产品乡村振兴扶持政策汇总';
+            metaEl.textContent = '发布时间：2024-03-15 | 阅读量：2145';
+            contentEl.innerHTML = `
+                <strong>一、种植环节补贴</strong><br>
+                1. 新品种引进补贴：梨、苹果等新品种每亩补贴1000元，最高补贴50亩；<br>
+                2. 有机肥替代化肥补贴：每亩补贴200元，需签订绿色种植承诺书；<br>
+                3. 农机购置补贴：果园旋耕机、采摘机等农机补贴比例达30%-50%。<br><br>
+
+                <strong>二、加工环节扶持</strong><br>
+                1. 初加工厂房建设：按建设成本的20%补贴，最高补贴100万元；<br>
+                2. 深加工设备购置：梨膏、苹果汁加工设备补贴比例30%；<br>
+                3. 品牌建设：农产品地理标志认证费用全额补贴，品牌推广费用补贴50%。<br><br>
+
+                <strong>三、销售环节激励</strong><br>
+                1. 电商销售：通过电商平台销售农产品，按销售额的2%给予奖励，单户每年最高奖励10万元；<br>
+                2. 线下展销：参加农产品展销会，展位费、运输费全额补贴；<br>
+                3. 订单农业：与商超、企业签订长期订单，按订单金额的1%给予奖励。<br><br>
+
+                <strong>四、金融支持</strong><br>
+                1. 贷款贴息：涉农贷款年利率最高贴息3个百分点；<br>
+                2. 创业担保贷款：返乡创业从事农产品种植加工，可申请最高30万元无息贷款；<br>
+                3. 风险补偿：设立农产品产业风险补偿基金，为金融机构放贷提供风险兜底。
+            `;
+        }
+
+        // 显示弹窗
+        modal.style.display = 'flex';
+        // 禁止页面滚动
+        document.body.style.overflow = 'hidden';
+    }
+
+    // 关闭报告详情弹窗
+    function closeReportModal() {
+        const modal = document.getElementById('reportDetailModal');
+        modal.style.display = 'none';
+        // 恢复页面滚动
+        document.body.style.overflow = 'auto';
+    }
+
+    // 原有函数保留（switchToHome/switchToIndustry等）
+    function switchToHome() {
+        document.getElementById('homePage').classList.add('active');
+        document.getElementById('industryPage').classList.remove('active');
+        document.getElementById('financePage').classList.remove('active');
+        document.getElementById('submitPage').classList.remove('active');
+        document.getElementById('mallPage').classList.remove('active');
+        // 关闭弹窗（如果打开）
+        closeReportModal();
+    }
+
+    // 其他原有函数（switchToIndustry/switchToFinance/switchToMall/submitForm）保持不变
+</script>
+
+    <!-- 4. 农产品商城页面（全新购物商城样式 + 商品详情弹窗） -->
+<div class="mall-page" id="mallPage">
+    <div class="page-header">农产品商城</div>
+
+    <!-- 商品网格布局 -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0 20px; margin-bottom: 30px;">
+
+        <!-- 商品1：平遥襄垣酥梨 -->
+        <div class="product-item" onclick="openProduct(1)" style="
+            background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            <img src="平遥襄垣酥梨.jpg" style="width:100%; height:150px; object-fit:cover;">
+            <div style="padding:12px;">
+                <div style="font-size:16px; font-weight:bold; margin-bottom:5px;">平遥襄垣酥梨</div>
+                <div style="color:#009e5f; font-size:15px; margin-bottom:5px;">¥26.9 / 5斤</div>
+                <div style="font-size:12px; color:#999;">产地：山西平遥</div>
+            </div>
+        </div>
+
+        <!-- 商品2：文水贡梨 -->
+        <div class="product-item" onclick="openProduct(2)" style="
+            background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            <img src="文水酥梨.jpg" style="width:100%; height:150px; object-fit:cover;">
+            <div style="padding:12px;">
+                <div style="font-size:16px; font-weight:bold; margin-bottom:5px;">文水贡梨</div>
+                <div style="color:#009e5f; font-size:15px; margin-bottom:5px;">¥28.8 / 5斤</div>
+                <div style="font-size:12px; color:#999;">产地：山西文水</div>
+            </div>
+        </div>
+
+        <!-- 商品3：运城白酥梨 -->
+        <div class="product-item" onclick="openProduct(3)" style="
+            background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            <img src="白酥梨.jpg" style="width:100%; height:150px; object-fit:cover;">
+            <div style="padding:12px;">
+                <div style="font-size:16px; font-weight:bold; margin-bottom:5px;">运城白酥梨</div>
+                <div style="color:#009e5f; font-size:15px; margin-bottom:5px;">¥24 / 5斤</div>
+                <div style="font-size:12px; color:#999;">产地：山西运城</div>
+            </div>
+        </div>
+
+        <!-- 商品4：红富士苹果 -->
+        <div class="product-item" onclick="openProduct(4)" style="
+            background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            <img src="万荣苹果.jpg" style="width:100%; height:150px; object-fit:cover;">
+            <div style="padding:12px;">
+                <div style="font-size:16px; font-weight:bold; margin-bottom:5px;">红富士苹果</div>
+                <div style="color:#009e5f; font-size:15px; margin-bottom:5px;">¥30.6 / 5斤</div>
+                <div style="font-size:12px; color:#999;">产地：山西运城</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 商品详情弹窗（默认隐藏） -->
+    <div id="productModal" style="
+        position:fixed; top:0; left:0; width:100%; height:100%;
+        background:rgba(0,0,0,0.7); z-index:999;
+        display:none; justify-content:center; align-items:center; padding:20px;">
+        <div style="background:#fff; width:100%; max-width:500px; border-radius:16px; overflow:hidden; max-height:90vh; overflow-y:auto;">
+            <img id="pImg" src="" style="width:100%; height:220px; object-fit:cover;">
+            <div style="padding:20px;">
+                <h2 id="pTitle" style="font-size:22px; margin-bottom:8px;"></h2>
+                <div id="pPrice" style="font-size:18px; color:#009e5f; font-weight:bold; margin-bottom:10px;"></div>
+                <div id="pOrigin" style="font-size:15px; color:#666; margin-bottom:15px;"></div>
+                <div id="pDesc" style="font-size:16px; line-height:1.7; color:#333;"></div>
+                <button onclick="closeProduct()" style="
+                    width:100%; background:#009e5f; color:#fff; border:none;
+                    border-radius:12px; padding:14px; font-size:17px; margin-top:20px;">
+                    关闭查看
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <button class="back-btn" onclick="switchToHome()">返回首页</button>
+</div>
+
+<script>
+    // 打开商品详情
+    function openProduct(id) {
+        const modal = document.getElementById("productModal");
+        const pImg = document.getElementById("pImg");
+        const pTitle = document.getElementById("pTitle");
+        const pPrice = document.getElementById("pPrice");
+        const pOrigin = document.getElementById("pOrigin");
+        const pDesc = document.getElementById("pDesc");
+
+        if (id == 1) {
+            pImg.src = "平遥襄垣酥梨.jpg";
+            pTitle.innerText = "平遥襄垣酥梨";
+            pPrice.innerText = "¥26.9 / 5斤装";
+            pOrigin.innerText = "产地：山西省平遥县襄垣乡";
+            pDesc.innerText = "襄垣酥梨果形端正、皮薄肉细、汁多味甜、酥脆爽口，是山西地理标志产品，自然成熟不打蜡，新鲜采摘直发。";
+        } else if (id == 2) {
+            pImg.src = "文水酥梨.jpg";
+            pTitle.innerText = "文水酥梨";
+            pPrice.innerText = "¥28.8 / 5斤装";
+            pOrigin.innerText = "产地：山西省文水县";
+            pDesc.innerText = "文水酥梨果肉洁白、质地细腻、糖度高，核小皮薄，耐储存，适合全家食用，是当地特色优质农产品。";
+        } else if (id == 3) {
+            pImg.src = "白酥梨.jpg";
+            pTitle.innerText = "运城白酥梨";
+            pPrice.innerText = "¥24 / 5斤装";
+            pOrigin.innerText = "产地：山西省运城市";
+            pDesc.innerText = "运城白酥梨果皮金黄、果肉雪白，口感清甜，润肺止咳，是传统优质梨品种，现摘现发保证新鲜。";
+        } else if (id == 4) {
+            pImg.src = "万荣苹果.jpg";
+            pTitle.innerText = "红富士苹果";
+            pPrice.innerText = "¥30.6 / 5斤装";
+            pOrigin.innerText = "产地：山西省运城市";
+            pDesc.innerText = "山西红富士苹果脆甜多汁、果肉紧实、果香浓郁，昼夜温差大造就高甜度，自然成熟不催红，健康美味。";
+        }
+
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+
+    // 关闭商品详情
+    function closeProduct() {
+        document.getElementById("productModal").style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+
+    // 返回首页时关闭弹窗
+    const oldSwitchToHome = switchToHome;
+    switchToHome = function() {
+        closeProduct();
+        oldSwitchToHome();
+    }
+</script>
 
     <script>
         // 切换到首页
